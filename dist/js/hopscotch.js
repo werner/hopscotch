@@ -1013,9 +1013,10 @@
         if (this.opt.isTourBubble) {
           var currStepNum = winHopscotch.getCurrStepNum(),
               currTour = winHopscotch.getCurrTour(),
-              doEndCallback = currStepNum === currTour.steps.length - 1;
+              doEndCallback = false;
 
           utils.invokeEventCallbacks('close');
+          document.querySelector('.hopscotch-bubble:not(.hide):not(.invisible)').style.display = 'none';
 
           winHopscotch.endTour(true, doEndCallback);
         } else {
