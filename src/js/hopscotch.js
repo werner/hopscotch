@@ -12,7 +12,6 @@ var Hopscotch,
     utils,
     callbacks,
     helpers,
-    winLoadHandler,
     defaultOpts,
     winHopscotch,
     undefinedStr      = 'undefined',
@@ -59,17 +58,6 @@ if (!Array.isArray) {
     return Object.prototype.toString.call(obj) === '[object Array]';
   };
 }
-
-/**
- * Called when the page is done loading.
- *
- * @private
- */
-winLoadHandler = function() {
-  if (waitingToStart) {
-    winHopscotch.startTour();
-  }
-};
 
 /**
  * utils
@@ -534,8 +522,6 @@ utils = {
     }
   }
 };
-
-utils.addEvtListener(window, 'load', winLoadHandler);
 
 callbacks = {
   next:  [],
@@ -1860,13 +1846,6 @@ Hopscotch = function(initOptions) {
         throw new Error('Specified step number out of bounds.');
       }
       currStepNum = stepNum;
-    }
-
-    // If document isn't ready, wait for it to finish loading.
-    // (so that we can calculate positioning accurately)
-    if (!utils.documentIsReady()) {
-      waitingToStart = true;
-      return this;
     }
 
     if (typeof currStepNum === "undefined" && currTour.id === cookieTourId && typeof cookieTourStep !== undefinedStr) {
