@@ -2439,9 +2439,7 @@ __p += '\n<div class="hopscotch-bubble-container" style="width: ' +
 ((__t = ( step.padding )) == null ? '' : __t) +
 'px;">\n  ';
  if(tour.isTour){ ;
-__p += '<span class="hopscotch-bubble-number">' +
-((__t = ( i18n.stepNum )) == null ? '' : __t) +
-'</span>';
+__p += '<div class="hopscotch-bubble-logo"></div>';
  } ;
 __p += '\n  <div class="hopscotch-bubble-content">\n    ';
  if(step.title !== ''){ ;
